@@ -6,16 +6,14 @@ import Notification from "./notification/Notification";
 
 
 
-export class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0
-}
-
+export const App = () => {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+};
 
 onLeaveFeedback = fedback => {
-    this.setState(prevState => ({
+    setState(prevState => ({
     [fedback]: prevState[fedback] + 1,
     }))
       }   
@@ -24,18 +22,17 @@ onLeaveFeedback = fedback => {
 
 
 countTotalFeedback = () => {
-    const total = this.state.good + this.state.neutral + this.state.bad
+    const total = good + neutral + bad
      return total
 
 }
 
 countPositiveFeedbackPercentage = () => {
-    return(this.state.good ? Math.round(((this.state.good/(this.state.good + this.state.neutral + this.state.bad))*100)) : 0 )
+    return(good ? Math.round(((good/(good + neutral +bad))*100)) : 0 )
 } 
 
 
   render() {
-  const { good, neutral, bad } = this.state;
 return (
   <>
     <Section title="Please leave feedback">
@@ -59,4 +56,4 @@ return (
   </>
 );
 }
-}
+
