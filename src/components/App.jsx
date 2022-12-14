@@ -1,43 +1,43 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Section from "./section/Section";
 import Statistics from "./statistics/Statistics";
 import FeedbackOptions from "./feedback/FeedbackOptions"
 import Notification from "./notification/Notification";
 
+export default function App() {
+const [good, setGood] = useState(0)
+const [neutral, setNeutral] = useState(0)
+const [bad, setBad] = useState(0)
 
+const onLeaveFeedback = fedback => {
+  // eslint-disable-next-line default-case
+  switch (fedback) {
+    case "good": setGood(state => state +1)
+    break
 
-export const App = () => {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
+    case "neutral": setNeutral(state => state +1)
+    break
 
+    case "bad": setBad(state => state +1)
+    break
+  }
+    }   
 
-onLeaveFeedback = feedback => {
-    setState(prevState => ({
-    [feedback]: prevState[feedback] + 1,
-    }))
-      }   
-    
+    const countTotalFeedback = () => {
+      const total = good + neutral + bad
+       return total
+  
+  }
 
-
-
-countTotalFeedback () => {
-    const total = good + neutral + bad
-     return total
-
-}
-
-countPositiveFeedbackPercentage () => {
-    return(good ? Math.round(((good/(good + neutral +bad))*100)) : 0 )
+  const countPositiveFeedbackPercentage = () => {
+    return(good ? Math.round(((good/(good + neutral + bad))*100)) : 0 )
 } 
-
-
 
 return (
   <>
     <Section title="Please leave feedback">
       <FeedbackOptions
-        options={Object.keys(this.state)}
+        options={['good', 'neutral', 'bad']}
         onLeaveFeedback={onLeaveFeedback}
       />{' '}
     </Section>
@@ -55,5 +55,5 @@ return (
     </Section>
   </>
 );
-      }
 
+}
