@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import { useState } from "react";
 import Section from "./section/Section";
 import Statistics from "./statistics/Statistics";
 import FeedbackOptions from "./feedback/FeedbackOptions"
@@ -12,9 +12,9 @@ export const App = () => {
   const [bad, setBad] = useState(0);
 };
 
-onLeaveFeedback = fedback => {
+onLeaveFeedback = feedback => {
     setState(prevState => ({
-    [fedback]: prevState[fedback] + 1,
+    [feedback]: prevState[feedback] + 1,
     }))
       }   
     
